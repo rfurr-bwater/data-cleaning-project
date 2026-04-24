@@ -18,10 +18,13 @@ def clean_exit_year(year_str:str) -> None|int:
 
 def clean_dob(date_str:str) -> int | None:
     '''Takes in a date string and returns an int with the birth year'''
+    if re.findall('Died|Death|DOD',date_str):
+        return None
+
     regex_dob = r'DOB\S*\s*\d{1,2}\/\d{1,2}\/(\d{2,4})'
     regex_birth = r'Born\S*\s*\d{1,2}\/\d{1,2}\/(\d{2,4})'
     regex_dmy = r'\d{2}\S+(\d{2})'
-    regex_my = r'DOB\S*\s*\S*\s*(\d{4})'
+    regex_my = r'DOB: \w+(?: \d+,)? (\d{4})'
 
     # DOB
     result = re.findall(regex_dob,date_str)
@@ -64,6 +67,7 @@ if __name__ == "__main__":
     b = "DOB:  08/03/25"
     c = "28-Aug-30"
     d = "DOB: October 1966"
-    ls = [a,b,c,d]
+    e = "Died: 1996.11"
+    ls = [a,b,c,d,e]
     for l in ls:
         print(clean_dob(l))

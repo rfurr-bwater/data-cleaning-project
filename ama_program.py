@@ -2,13 +2,6 @@ import csv
 import pandas as pd
 from ama_functions import *
 
-#TODO: add to this program
-    # clean the data using your functions 
-        # Birth and death dates
-    # write the cleaned data into a new csv file (optional but helpful for next step)
-    # put the cleaned data into a dataframe
-    #    - use your cereal_analysis python file as a template to read from csv
-
 if __name__ == "__main__":
 
     with open('alumni_anonymized.csv') as records:
